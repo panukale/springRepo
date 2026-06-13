@@ -21,4 +21,9 @@ public class ProfileController {
 	public String getTarget() {
 		return "15 LPA";
 	}
+	
+	@GetMapping("/company")
+	public String getCompany() {
+		return "RML";
+	}
 }
