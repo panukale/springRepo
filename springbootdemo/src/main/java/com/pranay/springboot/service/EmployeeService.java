@@ -49,4 +49,21 @@ public class EmployeeService {
 	public void deleteEmployee(Long id) {
 	    employeeRepository.deleteById(id);
 	}
+	
+	public Employee creatEmployee(Employee emp) {
+		return employeeRepository.save(emp);
+	}
+	
+	public Employee updateEmp(Long id,Employee employee) {
+		Employee existingEmployee=employeeRepository.findById(id).orElse(null);
+		
+		if(existingEmployee!=null) {
+			existingEmployee.setName(employee.getName());
+		    existingEmployee.setSalary(employee.getSalary());
+
+		    return employeeRepository.save(existingEmployee);
+		}else {
+			return null;
+		}
+	}
 }

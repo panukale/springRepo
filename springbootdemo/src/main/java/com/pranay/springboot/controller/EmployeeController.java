@@ -4,6 +4,9 @@ import java.util.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.pranay.springboot.model.Employee;
 import com.pranay.springboot.model.EmployeeResponseDto;
@@ -51,5 +54,19 @@ public class EmployeeController {
 	@GetMapping("/removeEmp/{id}")
 	public void removeEmp(@PathVariable long id) {
 		employeeService.deleteEmployee(id);
+	}
+	
+	@PostMapping("/employee")
+	public Employee creatEmployee(@RequestBody Employee employee) {
+		return employeeService.creatEmployee(employee);
+	}
+	
+	
+	@PutMapping("/employee/{id}")
+	public Employee updateEmployee(
+	        @PathVariable Long id,
+	        @RequestBody Employee employee) {
+
+	    return employeeService.updateEmp(id, employee);
 	}
 }
